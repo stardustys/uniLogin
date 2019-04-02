@@ -1,0 +1,61 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+        {
+            "path" : "pages/index/indexme",
+            "style" : {}
+        }
+	    ,{
+            "path" : "pages/login/login",
+            "style" : {
+				"navigationBarTitleText": "登录"
+			}
+        },{
+            "path" : "pages/login/register",
+            "style" : {
+				"navigationBarTitleText": "注册"
+			}
+        },{
+            "path" : "pages/login/userAgreement",
+            "style" : {
+				"navigationBarTitleText": "用户协议"
+			}
+        },{
+            "path" : "pages/login/logout",
+            "style" : {
+				"navigationBarTitleText": "登出"
+			}
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+    "tabBar" : {
+        "color" : "#7A7E83",
+        "selectedColor" : "#007AFF",
+        "borderStyle" : "black",
+        "backgroundColor" : "#F8F8F8",
+        "list" : [
+            {
+                "pagePath" : "pages/index/index",
+                "iconPath" : "static/tab_home.png",
+                "selectedIconPath" : "static/tab_home_s.png",
+                "text" : "主页"
+            },
+            {
+                "pagePath" : "pages/index/indexme",
+                "iconPath" : "static/tab_me.png",
+                "selectedIconPath" : "static/tab_me_s.png",
+                "text" : "我"
+            }
+        ]
+    }
+}

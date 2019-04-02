@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>uniapp与php（后台服务器）的交互登录，界面，接口，cookies，session</title>
+	</head>
+
+	<body>
+		<div style="max-width: 1000px;margin: 0 auto;">
+			<h1>uniapp与php（后台服务器）的交互登录，界面，接口，cookies，session</h1>
+			<div>
+				<p>0.目录</p>
+				<p><a href="#p1">1.前言</a></p>
+				<p><a href="#p2">2.uniapp前端</a></p>
+				<p><a href="#p3">3.后端接口</a></p>
+				<p><a href="#p4">4.uniapp与后端交互</a><p>
+				<p><a href="#p5">5.结果</a><p>
+			</div>
+			<div id="p1" name="p1">
+				<h2>1.前言</h2>
+				<div>
+					<p>uniapp是一个使用html5标准的，一次开发，可以发布到安卓，ios，小程序的多端框架。非常方便。</p>
+					<p><blue>这是一个非常基础的demo，面向于近乎无经验的朋友们。更重要的是指导按什么顺序看这篇demo文件。</blue><span style="color: red;">字有点多，比较乱，只能抱歉一条条看了</span>。本来想做一个完全手把手教程，也就是视频。但发现自己的表达过于贫瘠，只能做一个文字版的了。文字版过程将简单一点。</p>
+					<p>本demo分为前端和后端两部分，</p>
+					<p>
+						<blue>前端部分为简单登录模板，没有引用任何外部css，较为简单，并做了简单合法性校验。</blue>您可以拿去用，来少写几个输入框。<blue>登录保持用的是传统web的session（cookies）机制。</blue>符合传统开发习惯。本demo不含微信等的快捷登录，为传统手机号登录。
+					</p>
+					<p>后端采用php，结构较为简单。数据库为mysql，使用了预处理，保证了数据库安全，您可以放心使用。<blue>在下面的部分会有详细讲解，包括POST传值，接口，session。</blue>
+					</p>
+					<p>如果您想请我喝一杯咖啡(以示鼓励)，<a href="#coffee">可以点击这里（跳至页面底部）</a></p>
+				</div>
+			</div>
+			<div id="p2" name="p2">
+				<h2>2.uniapp前端</h2>
+				<p>首先，务必看一下官方视频教程，在官方文档首页如何学习里有链接。</p>
+				<p>本demo制作时的流程：</p>
+				<p>1.先制作界面，先不写js逻辑。新建“indexme”界面，在pages.json文件中，配置tabbar。其中图标可在阿里云图标库（https://www.iconfont.cn/）下载，下载png格式时，可直接指定颜色，大小为81。json与效果如下：</p>
+				<img src="README_img/tabbar.png" style="width: 450px;margin-right: 50px;" />
+				<img src="README_img/indexbar.png" style="width: 220px;" />
+				<p>2.新建login/register/logot界面，来绘制登录、注册、退出页面。绘制输入框，并在js中对输入框的合法性进行简单验证。（先不写网络交互逻辑。）之后补全页面跳转逻辑。</p>
+				<img src="README_img/register.png" style="width: 180px;margin-right: 20px;" />
+				<img src="README_img/合法性校验.png" style="width: 380px;margin-right: 20px;" />
+				<img src="README_img/navigateTo.png" style="width: 330px;" />
+				<p>以上截图分别为界面，合法性校验，页面跳转。</p>
+			</div>
+			<div id="p3" name="p3">
+				<h2>3.后端接口</h2>
+				<p>1.php搭建环境较为简单，安装<blue>xampp</blue>即可，如果端口占用，记得需要配置端口，百度有方法。数据库端口如果没有冲突就不配置。启动php环境（根据百度查看自己是否成功）。文件需要放到htdocs文件夹。</p>
+				<p>2.如果你想直接看看本demo后端效果。<blue>将本demo的htdocs文件夹放到对应位置后。打开刚刚安装的xampp，打开数据库可视页面，新建数据库（你喜欢的名字），在本demo的config文件夹修改数据库名字。之后，在你选择的数据库中，执行本demo的sql文件夹中的sql语句进行建表。 在htdocs的很目录里，有一个test.php，你可以使用它来向你本地网址post数据来测试登录效果。</blue>test2.php是可以刷新看看你登录没有</p>
+				<img src="README_img/xampp.png" style="width: 430px;margin-right: 20px;" />
+				<img src="README_img/db.png" style="width: 580px;;" />
+				<img src="README_img/testphp.png" style="width: 490px;margin-right: 20px;" />
+				<img src="README_img/network.png" style="width: 480px;" />
+				<img src="README_img/loginphp.png" style="width: 580px;" />
+				<p>以上截图分别是xampp界面、数据库可视界面、测试界面，点按post后的网络请求。登录测试</p>
+				<p>浏览器测试时，请按F12打开开发者工具，查看网络请求选项里的网络请求。请使用火狐或谷歌浏览器。</p>
+				<p><blue>这些就是常规web登录的登录原理。</blue></p>
+				<p><strong>3.php文件通过$_POST['phone']来接受前台传过来的“phone”变量，接受到变量，自然就可以处理了，你可以去login.php文件看一下，代码行数较少，比较容易看明白。这些接口</strong></p>
+				<p>4、连接数据库，数据库的配置文件提出来，在文件上面引用，多个文件用。使用预处理，防止数据库注入攻击。</p>
+				<p>3、4的教程可以通读：http://www.runoob.com/php/php-tutorial.html</p>
+			</div>
+			<div id="p4" name="p4">
+				<h2>4.uniapp与后端交互</h2>
+				<p>uni的请求，除了h5端，是不挟带cookies的，刚刚第二大部分，是使用cookies进行传输session信息。所以我们需要构建请求头。如有返回回来的cookies，保存到本地储存里。详见<blue>login.vue文件</blue>。现在，在第一部分uniapp的前端的js中，补齐网络请求。（分别在login，register，logout，和index中，index中的是为了第一次打开事判断登录状态）</p>
+				<p><blue>本demo没有做session过期的判断，您可以做上。</blue></p>
+				<img src="README_img/request.png" style="width: 700px;" />
+			</div>
+			<div id="p5" name="p5">
+				<h2>5.结果</h2>
+				<p>登录后，本地保存了session，您如果需要什么网络请求，带上它就好了，就知道谁发过来的，而不用查询数据库。关闭app后，重新打开，仍在登录状态</p>
+			</div>
+			<div id="coffee" name="coffee">
+				<h2>支持我：</h2>
+				<p>码了这么多字，有些口渴，如果您想请我喝一杯咖啡(以示鼓励)，那非常感谢，或在插件页面评分。本篇与源码无转载限制，随意使用。</p>
+				<p>如果那一段不太明白，在uni插件市场提出就可以~<blue>我会再去补充~</blue></p>
+				<div style="text-align: center;">
+					<img src="README_img/zfb.jpg" style="width: 300px;margin-right:100px;" />
+					<img src="README_img/wx.png" style="width: 290px;" />
+				</div>
+			</div>
+		</div>
+		<style>
+			p {
+				text-indent: 25px;
+				margin-bottom: 5px;
+				font-size: 1.2rem;
+			}
+
+			blue {
+				color: blue;
+			}
+			img{border:2px solid brown;}
+		</style>
+	</body>
+</html>
