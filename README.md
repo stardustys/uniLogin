@@ -15,7 +15,11 @@ uniapp与php（后台服务器）的交互登录，界面，接口，cookies，s
 
 <span id="p1">1.前言</span>
 ----
-建议直接看【readme.html】文件，【有颜色标识】，本md文件不保证图片正确显示
+建议直接看【readme.html】文件，【有颜色标识】，本md文件不保证图片正确显示，可直接下载压缩包内的md文件阅读
+
+uniapp插件市场地址:https://ext.dcloud.net.cn/plugin?id=275 ，你可以帮忙点一下
+
+github地址:https://github.com/stardustys/uniLogin.git ，图片您可以看这里的README.md
 
 uniapp是一个使用html5标准的，一次开发，可以发布到安卓，ios，小程序的多端框架。非常方便。
 
@@ -86,6 +90,6 @@ uni的请求，除了h5端，是不挟带cookies的，刚刚第二大部分，�
 
 如果您想请我喝一杯咖啡(以示鼓励)，那非常感谢，或在插件页面评分。本篇与源码无转载限制，随意使用。
 
-如果那一段不太明白，在uni插件市场提出就可以~我会再去补充~
+如果那一段不太明白，在uni插件市场提出就可以，我会再去补充。
 
 ![](README_img/zfb.jpg) ![](README_img/wx.png)
