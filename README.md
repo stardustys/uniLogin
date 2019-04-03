@@ -15,11 +15,17 @@ uniapp与php（后台服务器）的交互登录，界面，接口，cookies，s
 
 <span id="p1">1.前言</span>
 ----
-建议直接看【readme.html】文件，【有颜色标识】，本md文件不保证图片正确显示，可直接下载压缩包内的md文件阅读
+建议直接看【readme.html】文件，【有颜色标识】，本md文件不保证图片正确显示，可直接下载压缩包内的md文件阅读。
+
+*。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+【【【【【因为uniapp插件市场上传格式的关系，服务端和教程无法直接放到压缩包内，先暂时放static文件夹里了，务必记得移出来！！！！！！！或看github版本。】】】】】
+。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。*
 
 uniapp插件市场地址:https://ext.dcloud.net.cn/plugin?id=275 ，你可以帮忙点一下
 
 github地址:https://github.com/stardustys/uniLogin.git ，图片您可以看这里的README.md
+
+简书文章地址:https://www.jianshu.com/p/4bcf8fbd5e81
 
 uniapp是一个使用html5标准的，一次开发，可以发布到安卓，ios，小程序的多端框架。非常方便。
 
@@ -42,11 +48,17 @@ uniapp是一个使用html5标准的，一次开发，可以发布到安卓，ios
 
 1.先制作界面，先不写js逻辑。新建“indexme”界面，在pages.json文件中，配置tabbar。其中图标可在阿里云图标库（https://www.iconfont.cn/ ）下载，下载png格式时，可直接指定颜色，大小为81。json与效果如下：
 
-![](README_img/tabbar.png) ![](README_img/indexbar.png)
+![](README_img/tabbar.png) 
+
+![](README_img/indexbar.png)
 
 2.新建login/register/logot界面，来绘制登录、注册、退出页面。绘制输入框，并在js中对输入框的合法性进行简单验证。（先不写网络交互逻辑。）之后补全页面跳转逻辑。
 
-![](README_img/register.png) ![](README_img/合法性校验.png) ![](README_img/navigateTo.png)
+![](README_img/register.png) 
+
+![](README_img/合法性校验.png) 
+
+![](README_img/navigateTo.png)
 
 以上截图分别为界面，合法性校验，页面跳转。
 
@@ -57,7 +69,15 @@ uniapp是一个使用html5标准的，一次开发，可以发布到安卓，ios
 
 2.如果你想直接看看本demo后端效果。将本demo的htdocs文件夹放到对应位置后。打开刚刚安装的xampp，打开数据库可视页面，新建数据库（你喜欢的名字），在本demo的config文件夹修改数据库名字。之后，在你选择的数据库中，执行本demo的sql文件夹中的sql语句进行建表。 在htdocs的很目录里，有一个test.php，你可以使用它来向你本地网址post数据来测试登录效果。test2.php是可以刷新看看你登录没有
 
-![](README_img/xampp.png) ![](README_img/db.png) ![](README_img/testphp.png) ![](README_img/network.png) ![](README_img/loginphp.png)
+![](README_img/xampp.png) 
+
+![](README_img/db.png) 
+
+![](README_img/testphp.png) 
+
+![](README_img/network.png) 
+
+![](README_img/loginphp.png)
 
 以上截图分别是xampp界面、数据库可视界面、测试界面，点按post后的网络请求。登录测试
 
